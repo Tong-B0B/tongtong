@@ -1,0 +1,132 @@
+3.23 星期二
+闭包(closure)：即重用变量，又保护变量不被污染的机制
+为什么使用？
+全局特点：可反复使用，容易造成污染问题。
+局部特点：反之。
+
+function fn(){
+	var num=0;
+	return function (){...}
+}
+	外层函数返回内层函数的对象
+2.直接给全局变量赋值一个内部的function
+	return function（）{...}
+	将内部函数保存在一个对象的属性或者数组中
+	return[fn,fn,fn]
+	return {fun:function(){...}}
+	调用外层函数，用外部变量直接返回的内层函数对象，形成闭包。
+
+闭包如何形成：
+外层函数调用后，外层函数的作用域对象AO,无法释放的，被内层函数对象scope引用着
+缺点：
+1.比普通的函数占用更多的内存，多的是外层函数的作用域对象（AO），始终存在。
+2.容易造成内存泄漏（console.log）
+
+理解闭包的流程
+1.找到受保护的变量，确定外层函数调用后。受保护变量的最终值
+2.找到操作变化的变量的内层函数对象
+
+对象
+
+自定义对象：
+1.对象字面量创建对象
+var obj={
+	name:"xxx"
+	sex:"woman"
+}
+console.log(obj.name)
+
+2.构造函数创建对象
+var obj3=new object();
+objc3.ename="xx";
+objc3.sex="nv"
+console.log(obj3)
+
+for in 方法：循环
+var tt={
+	name:"TT",
+	sex:"nv",
+	job:"stu",
+	age:"20"
+}
+for(var key in tt){
+      //key:代表的就是对象中的每一个属性名
+	console.log(tt[key])
+}
+
+内置对象
+Math对象:不需要使用new创建，可以直接使用
+
+1.取整
+向上取整：Math.ceil(num)
+向下取整：Math.floor(num)
+四舍五入取整：Math.round(num)
+乘方和开平方：Math.pow(底数，次幂)
+	       Math.sqrt(num)
+
+判断一个数字是不是质数？
+var num=4;
+function fn(){
+	for(var i=2;i<=Math.sqrt(num);i++){
+		if(num%==0){
+		        return"不是质数"
+		}
+	}
+	return"是质数"
+}
+var result=fn();
+console.log(result)
+
+
+石头剪刀布
+var DL=parseInt(Math.random()*3+1)
+var ZJ=prompt("请输入1=石头 2=剪刀 3=布")
+console.log()
+	if(ZJ==1 && DL==2){
+		console.log("ZJ石头 DL剪刀 ZJ赢")
+	}else if(ZJ==2 && DL==3){
+		console.log("ZJY")
+	}else if(ZJ==3 && DL==1){
+		console.log("ZJY")
+	}else if(ZJ==2 && DL==1){
+		console.log("DLY")
+	}else if(ZJ==3 && DL==2){
+		console.log("DLY")
+	}else if(ZJ==1 && DL==3){
+		console.log("DLY")
+	}else ("GY")
+
+Math.abs()绝对值
+
+创建Date对象
+new Date ( )
+
+:
+console.log(date.getFullYear())   //哪年
+console.log(date.getMonth)        //哪月
+console.log(date.getDate)         //哪日
+console.log(date.getHours)        //时
+console.log(date.getMinutes)      //分
+console.log(date.getSeconds)      //秒
+console.log(date.getMilliseconds) //毫秒
+console.log(date.getDay)          //星期
+console.log(date.getTime)         //距离计算机元年的毫秒数
+console.log(date.toLocaleString())        //年月日时秒分
+console.log(date.toLocaleDateString())    //年月日
+console.log(date.toLocaleTimeString())    //上午或者下午时秒分
+console.log(date.toString())             //当地时间完整格式（时区）
+console.log(date.toGMTString())          //国际时间完整格式（0时区）
+
+设置日期时间（星期不能设置）
+date.setTime(21321432412312);       //距离计算机元年的时间
+date.setFullYear(2022);             //年
+date.setMonth(0);                   //月
+date.setDate(1);                    //日
+date.setHours(1);                   //时
+date.setMinutes(1);                 //分
+date.setSeconds(1);                 //秒
+date.setMilliseconds(10);           //毫秒
+console.log(date.toLocalString());  //输出设置的时间
+
+
+
